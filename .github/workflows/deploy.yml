@@ -52,10 +52,7 @@ jobs:
       matrix:
         # Each font variant is published to its own gh-pages branch.
         font:
-          - { key: all, suffix: '' }
           - { key: firasans, suffix: '-firasans-only' }
-          - { key: pingfang, suffix: '-pingfang-only' }
-          - { key: sarasa, suffix: '-sarasa-only' }
           - { key: none, suffix: '-no-fonts' }
     steps:
       - uses: actions/checkout@v6
@@ -85,10 +82,7 @@ jobs:
       fail-fast: false
       matrix:
         font:
-          - { key: all, suffix: '' }
           - { key: firasans, suffix: '-firasans-only' }
-          - { key: pingfang, suffix: '-pingfang-only' }
-          - { key: sarasa, suffix: '-sarasa-only' }
           - { key: none, suffix: '-no-fonts' }
     steps:
       - uses: actions/checkout@v6
