@@ -53,9 +53,7 @@ jobs:
         # Each font variant is published to its own gh-pages branch.
         font:
           - { key: all, suffix: '' }
-          - { key: cdn, suffix: '-cdn-fonts' }
           - { key: firasans, suffix: '-firasans-only' }
-          - { key: misans, suffix: '-misans-only' }
           - { key: pingfang, suffix: '-pingfang-only' }
           - { key: sarasa, suffix: '-sarasa-only' }
           - { key: none, suffix: '-no-fonts' }
@@ -88,9 +86,7 @@ jobs:
       matrix:
         font:
           - { key: all, suffix: '' }
-          - { key: cdn, suffix: '-cdn-fonts' }
           - { key: firasans, suffix: '-firasans-only' }
-          - { key: misans, suffix: '-misans-only' }
           - { key: pingfang, suffix: '-pingfang-only' }
           - { key: sarasa, suffix: '-sarasa-only' }
           - { key: none, suffix: '-no-fonts' }
