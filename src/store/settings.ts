@@ -144,7 +144,7 @@ export const emoji = useStorage<EMOJIS>(
 export const customBackgroundURL = useStorage('config/custom-background-image', '')
 export const dashboardTransparent = useStorage('config/dashboard-transparent', 90)
 export const autoUpgradeDashboard = useStorage('config/auto-upgrade', false)
-export const checkUpgradeCore = useStorage('config/check-upgrade-core', true)
+export const checkUpgradeCore = useStorage('config/check-upgrade-core', false)
 export const autoUpgradeCore = useStorage('config/auto-upgrade-core', false)
 export const swipeInPages = useStorage('config/swipe-in-pages', true)
 export const swipeInTabs = useStorage('config/swipe-in-tabs', false)
@@ -167,8 +167,8 @@ export const keyboardShortcuts = useStorage<Record<string, string>>('config/keyb
 
 // overview
 export const splitOverviewPage = useStorage('config/split-overview-page', false)
-export const autoIPCheck = useStorage('config/auto-ip-check', true)
-export const autoConnectionCheck = useStorage('config/auto-connection-check', true)
+export const autoIPCheck = useStorage('config/auto-ip-check', false)
+export const autoConnectionCheck = useStorage('config/auto-connection-check', false)
 export const showStatisticsWhenSidebarCollapsed = useStorage(
   'config/show-statistics-when-sidebar-collapsed',
   true,
