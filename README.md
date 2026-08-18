@@ -1,10 +1,3 @@
-# zashboard
-
-<p align="center">
-  <img src="./readme/pc.png" height="300">
-  <img src="./readme/mobile.png" height="300">
-</p>
-
 ## **Requirement**
 
 Browser support
