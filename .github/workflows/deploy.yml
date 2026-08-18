@@ -29,23 +29,23 @@ permissions:
   pull-requests: write
 
 jobs:
-  release-please:
-    runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
+  #release-please:
+    #runs-on: ubuntu-latest
+    #outputs:
+      #release_created: ${{ steps.release.outputs.release_created }}
+      #tag_name: ${{ steps.release.outputs.tag_name }}
 
-    steps:
-      - name: release-please
-        id: release
-        uses: googleapis/release-please-action@v5
-        with:
-          token: ${{ secrets.PAT }}
-          release-type: node
-          target-branch: main
+    #steps:
+      #- name: release-please
+        #id: release
+        #uses: googleapis/release-please-action@v5
+        #with:
+          #token: ${{ secrets.PAT }}
+          #release-type: node
+          #target-branch: main
 
   build-and-deploy:
-    needs: release-please
+    #needs: release-please
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -69,36 +69,36 @@ jobs:
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.PAT }}
           publish_dir: ./dist
           publish_branch: gh-pages${{ matrix.font.suffix }}
           force_orphan: true
 
-  release-dist:
-    needs: release-please
-    runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.release_created }}
-    strategy:
-      fail-fast: false
-      matrix:
-        font:
-          - { key: firasans, suffix: '-firasans-only' }
-          - { key: none, suffix: '-no-fonts' }
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-      - uses: pnpm/action-setup@v6
+  #release-dist:
+    #needs: release-please
+    #runs-on: ubuntu-latest
+    #if: ${{ needs.release-please.outputs.release_created }}
+    #strategy:
+      #fail-fast: false
+      #matrix:
+        #font:
+          #- { key: firasans, suffix: '-firasans-only' }
+          #- { key: none, suffix: '-no-fonts' }
+    #steps:
+      #- uses: actions/checkout@v6
+      #- uses: actions/setup-node@v6
+      #- uses: pnpm/action-setup@v6
 
-      - name: Build and Zip the dist folder
-        env:
-          FONT: ${{ matrix.font.key }}
-        run: |
-          pnpm i
-          pnpm run build
-          zip -r dist${{ matrix.font.suffix }}.zip dist
+      #- name: Build and Zip the dist folder
+        #env:
+          #FONT: ${{ matrix.font.key }}
+        #run: |
+          #pnpm i
+          #pnpm run build
+          #zip -r dist${{ matrix.font.suffix }}.zip dist
 
-      - name: Upload to GitHub Release
-        uses: softprops/action-gh-release@v3
-        with:
-          files: dist${{ matrix.font.suffix }}.zip
-          tag_name: ${{ needs.release-please.outputs.tag_name }}
+      #- name: Upload to GitHub Release
+        #uses: softprops/action-gh-release@v3
+        #with:
+          #files: dist${{ matrix.font.suffix }}.zip
+          #tag_name: ${{ needs.release-please.outputs.tag_name }}
