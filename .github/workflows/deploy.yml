@@ -40,7 +40,7 @@ jobs:
         id: release
         uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.PAT }}
           release-type: node
           target-branch: main
 
