@@ -40,7 +40,7 @@ jobs:
         id: release
         uses: googleapis/release-please-action@v5
         with:
-          github_token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}
           release-type: node
           target-branch: main
 
@@ -70,12 +70,11 @@ jobs:
         run: |
           pnpm i
           pnpm run build
-          echo 'board.zash.run.place' > ./dist/CNAME
 
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}
           publish_dir: ./dist
           publish_branch: gh-pages${{ matrix.font.suffix }}
           force_orphan: true
