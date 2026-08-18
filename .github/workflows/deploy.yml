@@ -72,7 +72,7 @@ jobs:
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
-          token: ${{ secrets.PAT }}
+          personal_token: ${{ secrets.PAT }}
           publish_dir: ./dist
           publish_branch: gh-pages${{ matrix.font.suffix }}
           force_orphan: true
